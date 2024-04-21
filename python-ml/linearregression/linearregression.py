@@ -6,6 +6,8 @@ import scipy as sp
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error
+from joblib import dump, load
+
 
 # Reading data
 
@@ -83,4 +85,65 @@ Sciplot allows to plot residuals distribution against normal distribution
 fig, ax = plt.subplots(figsize=(6, 8), dpi=100)
 _ = sp.stats.probplot(test_residuals, plot=ax)
 
-plt.show()
+# plt.show()
+
+'''
+Create the model ready to be deployed
+Fit the model on the entire data
+'''
+final_model = LinearRegression()
+final_model.fit(X, y)
+
+'''
+Check out beta coefficients of the model
+'''
+print(final_model.coef_)
+
+'''
+Predict
+and plot predictions against real dataset
+'''
+
+y_hat = final_model.predict(X)
+
+fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(16,6))
+
+axes[0].plot(df['TV'], df['sales'], 'o')
+axes[0].plot(df['TV'], y_hat, 'o', color='red')
+axes[0].set_ylabel('Sales')
+axes[0].set_xlabel('TV Spend')
+
+axes[1].plot(df['radio'], df['sales'], 'o')
+axes[1].plot(df['radio'], y_hat, 'o', color='red')
+axes[1].set_ylabel('Sales')
+axes[1].set_xlabel('Radio Spend')
+
+axes[2].plot(df['newspaper'], df['sales'], 'o')
+axes[2].plot(df['newspaper'], y_hat, 'o', color='red')
+axes[2].set_ylabel('Sales')
+axes[2].set_xlabel('Newspaper Spend')
+
+# plt.show()
+
+'''
+Save the model
+'''
+
+dump(final_model, 'final_sales_model.joblib')
+
+
+'''
+load model
+'''
+
+loaded_model = load('final_sales_model.joblib')
+print('Loaded Coefficients:', loaded_model.coef_)
+
+'''
+With the loaded model it is possible to make predictions on new data
+spending 149 on TV, 22 on Radio and 12 on Newspaper
+The model will predict the sales of this new campaign
+with an accuracy given by the RSME
+'''
+campaign = [[149, 22, 12]]
+loaded_model.predict(campaign)
