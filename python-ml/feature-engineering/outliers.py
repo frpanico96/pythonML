@@ -44,3 +44,26 @@ lower_limit_np = q25 - 1.5*IQRnp
 print(lower_limit_np)
 ser_without_outlier_np = ser[ser > lower_limit_np]
 print(ser_without_outlier_np)
+
+
+df = pd.read_csv("../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Ames_Housing_Data.csv")
+# print(df)
+
+"""
+explore correlation matrix
+Focus on label and most correlated features with the label
+Plotting those features vs labels it is possible to determine outliers
+"""
+saleprice_corr = df.corr(numeric_only=True)["SalePrice"].sort_values()
+print(saleprice_corr)
+
+# sns.scatterplot(x="Overall Qual", y="SalePrice", data=df)
+# sns.scatterplot(x="Gr Liv Area", y="SalePrice", data=df)
+# plt.show()
+
+df_drop_outliers = df[(df["Gr Liv Area"] > 4000) & (df["SalePrice"] < 400000)].index
+
+df = df.drop(df_drop_outliers, axis=0)
+
+sns.scatterplot(x="Gr Liv Area", y="SalePrice", data=df)
+plt.show()
