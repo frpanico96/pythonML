@@ -30,10 +30,10 @@ ms_subclass_col = "MS SubClass"
 perc_nan_x_label = "Feature"
 perc_nan_y_label = "Percentage Nan"
 
-with open("../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Ames_Housing_Feature_Description.txt") as f:
+with open("../../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Ames_Housing_Feature_Description.txt") as f:
     print(f.read())
 
-df = pd.read_csv("../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Ames_outliers_removed.csv")
+df = pd.read_csv("../../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Ames_outliers_removed.csv")
 print(df.info())
 
 """
@@ -149,7 +149,7 @@ And can bring to create implied ordering and relationships
 We want to transform it in a string encoded feature
 """
 
-df = pd.read_csv("../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Ames_NO_Missing_Data.csv")
+df = pd.read_csv("../../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Ames_NO_Missing_Data.csv")
 
 df[ms_subclass_col] = df[ms_subclass_col].apply(str)
 # Pandas treat string as objects

@@ -12,7 +12,7 @@ from sklearn.linear_model import Ridge, RidgeCV, LassoCV, ElasticNetCV
 from sklearn.metrics import mean_absolute_error, root_mean_squared_error
 # from sklearn.metrics._scorer import _SCORERS
 
-df = pd.read_csv('../../UNZIP_FOR_NOTEBOOKS_FINAL/08-Linear-Regression-Models/Advertising.csv')
+df = pd.read_csv('../../../UNZIP_FOR_NOTEBOOKS_FINAL/08-Linear-Regression-Models/Advertising.csv')
 
 X = df.drop('sales', axis=1)
 y = df['sales']

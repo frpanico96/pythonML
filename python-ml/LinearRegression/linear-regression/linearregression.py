@@ -11,7 +11,7 @@ from joblib import dump, load
 
 # Reading data
 
-df = pd.read_csv('../../UNZIP_FOR_NOTEBOOKS_FINAL/08-Linear-Regression-Models/Advertising.csv')
+df = pd.read_csv('../../../UNZIP_FOR_NOTEBOOKS_FINAL/08-Linear-Regression-Models/Advertising.csv')
 
 # print(df.head())
 

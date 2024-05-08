@@ -46,7 +46,7 @@ ser_without_outlier_np = ser[ser > lower_limit_np]
 print(ser_without_outlier_np)
 
 
-df = pd.read_csv("../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Ames_Housing_Data.csv")
+df = pd.read_csv("../../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Ames_Housing_Data.csv")
 # print(df)
 
 """

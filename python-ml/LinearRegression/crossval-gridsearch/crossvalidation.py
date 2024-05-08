@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import Ridge, RidgeCV
 from sklearn.metrics import root_mean_squared_error
 
-df = pd.read_csv("../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Advertising.csv")
+df = pd.read_csv("../../../UNZIP_FOR_NOTEBOOKS_FINAL/DATA/Advertising.csv")
 
 
 """
